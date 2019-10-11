@@ -1,5 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
+#include <memory>
+#include <gepEngine/Core.h>
 
 int main()
 {

@@ -1,0 +1,6 @@
+#include <memory>
+
+class Core
+{
+
+};
