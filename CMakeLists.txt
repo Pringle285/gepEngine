@@ -6,7 +6,7 @@ include_directories(src)
 add_library(gepEngine
   src/gepEngine/Core.cpp
   src/gepEngine/Core.h
-  src/gepEngine/Component.cpp
+	src/gepEngine/Component.cpp
   src/gepEngine/Component.h
   src/gepEngine/Entity.cpp
   src/gepEngine/Entity.h
