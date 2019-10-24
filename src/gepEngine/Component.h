@@ -10,7 +10,9 @@ private:
 	void onInit();
 	void onBegin();
 	void onTick();
-	void onDisplay();
+	virtual void onDisplay();
+
+	friend class ::Entity;
 
 public:
 	

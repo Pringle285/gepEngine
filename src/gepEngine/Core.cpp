@@ -21,15 +21,18 @@ std::shared_ptr<Entity> Core::addEntity()
 
 void Core::tick()
 {
+	std::cout << "coretick out" << std::endl;
 	for (auto i : entities)
 	{
-		std::cout << typeid(i).name();
+		//std::cout << typeid(i).name();
+		i->tick();
 	}
 }
 
 void Core::start()
 {
 	std::cout << "text from start func in core class" << std::endl;
+	tick();
 }
 
 void Core::end()

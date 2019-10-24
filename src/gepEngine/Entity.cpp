@@ -1,13 +1,13 @@
 #include "Entity.h"
+#include "Component.h"
 #include <iostream> 
 
 void Entity::tick()
 {
-	for (auto i : components)
+	for (auto x : components)
 	{
-		std::cout << typeid(i).name();
-		//call update on each i(componenet) once implemented
-		//i.update();
+		//std::cout << typeid(x).name();
+		x->onDisplay();
 	}
 }
 

@@ -1,11 +1,12 @@
 #include "Component.h"
+#include <iostream>
 
-void onInit()
+void Component::onInit()
 {
 
 }
 
-void onDisplay()
+void Component::onDisplay()
 {
-
+	std::cout << "onDisplay call from base component class" << std::endl;
 }
