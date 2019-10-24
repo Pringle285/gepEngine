@@ -12,6 +12,7 @@ add_library(gepEngine
   src/gepEngine/Entity.h
   src/gepEngine/Keyboard.cpp
   src/gepEngine/Keyboard.h
+	src/gepEngine/GepEngine.h
 )
 
 add_executable(sandbox
