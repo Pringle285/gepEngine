@@ -1,14 +1,74 @@
 #include "Core.h"
 #include "Entity.h"
 
-#include <iostream> 
+#include <iostream>
+#include <exception>
+#include <GL/glew.h>
 
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
 
 std::shared_ptr<Core> Core::initialize()
 {
+	//make shared ptr of core
 	std::shared_ptr<Core> core = std::make_shared<Core>();
+	
+	core->running = false;
+	
+	//sdl init
+	if(SDL_Init(SDL_INIT_VIDEO) < 0)
+	{
+		throw std::exception();
+	}
+
+	core->window = SDL_CreateWindow("Lab 4 - Architecture",
+		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+		WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+
+	if(!SDL_GL_CreateContext(core->window))
+	{
+		throw std::exception();
+	}
+
+	if(glewInit() != GLEW_OK)
+	{
+		throw std::exception();
+	}
+
 
 	return core;
+}
+
+void Core::start()
+{
+
+	running = true;
+
+	while(running)
+	{
+		SDL_Event event = {0};
+
+		while(SDL_PollEvent(&event))
+		{
+			if(event.type == SDL_QUIT)
+			{
+				running = false;
+			}
+		}
+		//calling update on all entities and components
+		tick();
+
+
+		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		//call display/draw functions from entities/components here
+
+		SDL_GL_SwapWindow(window);
+	}
+
+	SDL_DestroyWindow(window);
+	SDL_Quit();
 }
 
 std::shared_ptr<Entity> Core::addEntity()
@@ -29,11 +89,6 @@ void Core::tick()
 	}
 }
 
-void Core::start()
-{
-	std::cout << "text from start func in core class" << std::endl;
-	tick();
-}
 
 void Core::end()
 {

@@ -1,5 +1,7 @@
 #include "Component.h"
+#include "Entity.h"
 #include <iostream>
+
 
 void Component::onInit()
 {
@@ -8,5 +10,17 @@ void Component::onInit()
 
 void Component::onDisplay()
 {
-	std::cout << "onDisplay call from base component class" << std::endl;
+	
 }
+
+std::shared_ptr<Entity> Component::getEntity()
+{
+	return entity.lock();
+}
+
+std::shared_ptr<Core> Component::getCore()
+{
+	return getEntity()->getCore();
+}
+
+

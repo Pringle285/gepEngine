@@ -13,9 +13,15 @@ add_library(gepEngine
   src/gepEngine/Keyboard.cpp
   src/gepEngine/Keyboard.h
 	src/gepEngine/GepEngine.h
+	src/gepEngine/Exception.cpp
+	src/gepEngine/Exception.h
+	src/gepEngine/TriangleRenderer.cpp
+	src/gepEngine/TriangleRenderer.h
 )
 
+target_link_libraries(gepEngine SDL2 opengl32 glew32)
+
 add_executable(sandbox
-  src/sandbox/main.cpp
+	src/sandbox/main.cpp
 )
 target_link_libraries(sandbox gepEngine)

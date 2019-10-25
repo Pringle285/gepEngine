@@ -1,6 +1,8 @@
 #include <memory>
 #include <list>
 
+#include <SDL2/SDL.h>
+
 class Entity;
 
 class Core
@@ -8,6 +10,10 @@ class Core
 private:
 	std::list<std::shared_ptr<Entity>> entities;
 	void tick();
+	bool running;
+
+
+	SDL_Window *window;
 
 public:
 	static std::shared_ptr<Core> initialize();

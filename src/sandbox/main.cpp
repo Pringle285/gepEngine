@@ -3,6 +3,10 @@
 #include <memory>
 #include <gepEngine/GepEngine.h>
 
+#include <SDL2/SDL.h>
+#include <GL/glew.h>
+#include <exception>
+
 
 class TestScreen : public Component
 {
@@ -13,7 +17,13 @@ class TestScreen : public Component
 
 };
 
-
+//sdl2 tries to change main since each os uses
+//different mains such as winmain for windows
+//or nativemain on andriods and this avoids
+//the console based main in base c++, can simply
+//undef main, link to SDL2main or hack sdl
+//header file to avoid this
+#undef main
 int main()
 {
 	std::cout << "gep engine" << std::endl;
@@ -22,7 +32,8 @@ int main()
 
 	std::shared_ptr<Entity> entity1 = c->addEntity();
 
-	std::shared_ptr<TestScreen> testScreen = entity1->addComponent<TestScreen>();
+	std::shared_ptr<TriangleRenderer> triRender = entity1->addComponent<TriangleRenderer>();
+
 	//entity1->tick();
 	c->start();
 
