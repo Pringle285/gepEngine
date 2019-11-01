@@ -13,6 +13,8 @@ std::shared_ptr<Core> Core::initialize()
 	//make shared ptr of core
 	std::shared_ptr<Core> core = std::make_shared<Core>();
 	
+	core->self = core;
+
 	core->running = false;
 	
 	//sdl init
@@ -58,11 +60,14 @@ void Core::start()
 		//calling update on all entities and components
 		tick();
 
-
 		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		//calling update on all entities and components
+		tick();
+
 		//call display/draw functions from entities/components here
+		
 
 		SDL_GL_SwapWindow(window);
 	}
@@ -75,13 +80,14 @@ std::shared_ptr<Entity> Core::addEntity()
 {
 	std::shared_ptr<Entity> rtn = std::make_shared<Entity>();
 	entities.push_back(rtn);
-
+	rtn->self = rtn;
+	rtn->core = self;
 	return rtn;
 }
 
 void Core::tick()
 {
-	std::cout << "coretick out" << std::endl;
+	//std::cout << "coretick out" << std::endl;
 	for (auto i : entities)
 	{
 		//std::cout << typeid(i).name();

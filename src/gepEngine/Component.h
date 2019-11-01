@@ -12,13 +12,14 @@ class Core;
 class Component
 {
 private:
-	std::weak_ptr<Entity> entity;
-	void onInit();
-	void onBegin();
-	void onTick();
-	virtual void onDisplay();
-
 	friend class ::Entity;
+
+	std::weak_ptr<Entity> entity;
+
+	virtual void onInit();
+	virtual void onBegin();
+	virtual void onTick();
+	virtual void onDisplay();
 
 public:
 	std::shared_ptr<Entity> getEntity();

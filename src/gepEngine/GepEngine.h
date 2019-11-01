@@ -3,3 +3,8 @@
 #include "Component.h"
 #include "keyboard.h"
 #include "TriangleRenderer.h"
+#include "Exception.h"
+#include "Camera.h"
+#include "Environment.h"
+#include "Screen.h"
+#include "Transform.h"

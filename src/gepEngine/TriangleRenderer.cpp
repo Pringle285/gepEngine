@@ -4,6 +4,8 @@
 
 #include "TriangleRenderer.h"
 
+#include <iostream>
+
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 
@@ -41,8 +43,12 @@ const GLchar *fragmentShaderSrc =
   "";
 
 
+void TriangleRenderer::onTick()
+{
+	onDisplay();
+}
 
-void onDisplay()
+void TriangleRenderer::onDisplay()
 {
 	GLuint positionsVboId = 0;
 
@@ -150,20 +156,20 @@ void onDisplay()
   glDeleteShader(vertexShaderId);
   glDetachShader(programId, fragmentShaderId);
   glDeleteShader(fragmentShaderId);
-
+	std::cout << "this is from tri-render" << std::endl;
   bool quit = false;
 
   
 		//all this needs moving to somewhere appropriate
-		/*
-    glUseProgram(programId);
-    glBindVertexArray(vaoId);
+		
+  glUseProgram(programId);
+  glBindVertexArray(vaoId);
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+  glDrawArrays(GL_TRIANGLES, 0, 3);
 
-    glBindVertexArray(0);
-    glUseProgram(0);
-		*/
+  glBindVertexArray(0);
+  glUseProgram(0);
+	
  
 
 }

@@ -3,15 +3,13 @@
 #include <iostream>
 
 
-void Component::onInit()
-{
+void Component::onInit() {}
 
-}
+void Component::onBegin() {}
 
-void Component::onDisplay()
-{
-	
-}
+void Component::onTick() {}
+
+void Component::onDisplay() {}
 
 std::shared_ptr<Entity> Component::getEntity()
 {

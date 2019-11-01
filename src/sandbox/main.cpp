@@ -32,9 +32,11 @@ int main()
 
 	std::shared_ptr<Entity> entity1 = c->addEntity();
 
-	std::shared_ptr<TriangleRenderer> triRender = entity1->addComponent<TriangleRenderer>();
+	//std::shared_ptr<TriangleRenderer> triRender = entity1->addComponent<TriangleRenderer>();
 
-	//entity1->tick();
+	
+
+
 	c->start();
 
 	system("pause");

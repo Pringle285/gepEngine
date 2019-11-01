@@ -12,6 +12,8 @@ private:
 	void tick();
 	bool running;
 
+	std::weak_ptr<Core> self;
+
 
 	SDL_Window *window;
 
