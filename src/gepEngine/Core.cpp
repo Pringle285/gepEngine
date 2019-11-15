@@ -5,6 +5,9 @@
 #include <exception>
 #include <GL/glew.h>
 
+namespace gepEngine
+{
+
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
 
@@ -36,6 +39,11 @@ std::shared_ptr<Core> Core::initialize()
 	{
 		throw std::exception();
 	}
+	
+	//creating the resources object so it knows core exists
+	std::shared_ptr<Resources> resRtn = std::make_shared<Resources>();
+	resRtn->self = resRtn;
+	resRtn->core = self; 
 
 
 	return core;
@@ -99,4 +107,7 @@ void Core::tick()
 void Core::end()
 {
 	
+}
+
+
 }

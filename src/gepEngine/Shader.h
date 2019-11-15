@@ -1,9 +1,9 @@
-
+#include "Resource.h"
 
 namespace gepEngine
 {
 
-class Environment
+class Shader : public Resource
 {
 private:
 

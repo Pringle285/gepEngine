@@ -1,9 +1,9 @@
-
+#include "Resource.h"
 
 namespace gepEngine
 {
 
-class Keyboard
+class Texture : public Resource
 {
 private: 
 

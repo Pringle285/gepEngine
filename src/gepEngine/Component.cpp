@@ -2,6 +2,9 @@
 #include "Entity.h"
 #include <iostream>
 
+namespace gepEngine
+{
+
 
 void Component::onInit() {}
 
@@ -22,3 +25,4 @@ std::shared_ptr<Core> Component::getCore()
 }
 
 
+}

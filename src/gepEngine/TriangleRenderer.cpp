@@ -6,6 +6,9 @@
 
 #include <iostream>
 
+namespace gepEngine 
+{
+
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 
@@ -171,5 +174,7 @@ void TriangleRenderer::onDisplay()
   glUseProgram(0);
 	
  
+
+}
 
 }

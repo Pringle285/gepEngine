@@ -2,6 +2,9 @@
 
 #include <glm/glm.hpp>
 
+namespace gepEngine
+{
+
 class Transform : public Component
 {
 private:
@@ -16,3 +19,5 @@ public:
 
 
 };
+
+}

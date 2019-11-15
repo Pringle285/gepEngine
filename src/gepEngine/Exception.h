@@ -1,7 +1,7 @@
 #include <exception>
 #include <string>
 
-namespace rend
+namespace gepEngine
 {
 
 struct Exception : public std::exception
@@ -15,5 +15,6 @@ private:
 
 };
 
-}
+void pollForError();
 
+}

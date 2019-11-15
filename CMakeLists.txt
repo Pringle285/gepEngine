@@ -10,6 +10,8 @@ add_library(rend
 	src/rend/RenderTexture.cpp
 	src/rend/Shader.cpp
 	src/rend/Buffer.cpp
+	src/rend/Mesh.cpp
+	src/rend/Util.cpp
 )
 if(MSVC)
 	target_link_libraries(rend glew32 opengl32)
@@ -21,26 +23,21 @@ endif()
 
 add_library(gepEngine
 	src/gepEngine/Core.cpp
-	src/gepEngine/Core.h
 	src/gepEngine/Component.cpp
-	src/gepEngine/Component.h
 	src/gepEngine/Entity.cpp
-	src/gepEngine/Entity.h
 	src/gepEngine/Keyboard.cpp
-	src/gepEngine/Keyboard.h
-	src/gepEngine/GepEngine.h
 	src/gepEngine/Exception.cpp
-	src/gepEngine/Exception.h
 	src/gepEngine/TriangleRenderer.cpp
-	src/gepEngine/TriangleRenderer.h
 	src/gepEngine/Transform.cpp
-	src/gepEngine/Transform.h
 	src/gepEngine/Camera.cpp
-	src/gepEngine/Camera.h
 	src/gepEngine/Screen.cpp
-	src/gepEngine/Screen.h
 	src/gepEngine/Environment.cpp
-	src/gepEngine/Environment.h
+	src/gepEngine/Renderer.cpp
+	src/gepEngine/Resource.cpp
+	src/gepEngine/Shader.cpp
+	src/gepEngine/Texture.cpp
+	src/gepEngine/Mesh.cpp
+	src/gepEngine/Resources.cpp
 )
 
 target_link_libraries(gepEngine SDL2 rend)

@@ -7,6 +7,7 @@
 #include <GL/glew.h>
 #include <exception>
 
+using namespace gepEngine;
 
 class TestScreen : public Component
 {

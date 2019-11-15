@@ -2,6 +2,9 @@
 
 #include <glm/glm.hpp>
 
+namespace gepEngine
+{
+
 class Camera : public Component
 {
 private:
@@ -13,3 +16,5 @@ public:
 
 
 };
+
+}

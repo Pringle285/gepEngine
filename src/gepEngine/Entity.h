@@ -1,13 +1,16 @@
 #include <memory>
 #include <list>
 
+namespace gepEngine
+{
+
 class Component;
 class Core;
 
 class Entity
 {
 private:
-	friend class ::Core;
+	friend class gepEngine::Core;
 
 	std::weak_ptr<Core> core;
 	std::weak_ptr<Entity> self;
@@ -70,3 +73,5 @@ public:
 
 
 };
+
+}

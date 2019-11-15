@@ -2,6 +2,9 @@
 #include "Component.h"
 #include <iostream> 
 
+namespace gepEngine
+{
+
 void Entity::tick()
 {
 	for (auto x : components)
@@ -14,4 +17,6 @@ void Entity::tick()
 std::shared_ptr<Core> Entity::getCore()
 {
 	return core.lock();
+}
+
 }
