@@ -1,5 +1,6 @@
 #include "Core.h"
 #include "Entity.h"
+#include "Resources.h"
 
 #include <iostream>
 #include <exception>
@@ -35,18 +36,25 @@ std::shared_ptr<Core> Core::initialize()
 		throw std::exception();
 	}
 
-	if(glewInit() != GLEW_OK)
-	{
-		throw std::exception();
-	}
+	//if(glewInit() != GLEW_OK)
+	//{
+	//	throw std::exception();
+	//}
 	
 	//creating the resources object so it knows core exists
 	std::shared_ptr<Resources> resRtn = std::make_shared<Resources>();
 	resRtn->self = resRtn;
-	resRtn->core = self; 
-
+	resRtn->core = core; 
+	
+	//context = rend::Context::initialize();
+	core->context = rend::Context::initialize();
 
 	return core;
+}
+
+std::shared_ptr<rend::Context> Core::getContext()
+{
+	return context;
 }
 
 void Core::start()

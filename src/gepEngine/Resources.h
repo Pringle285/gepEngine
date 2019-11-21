@@ -6,12 +6,15 @@ namespace gepEngine
 {
 
 class Resource;
+class Core; 
 
 class Resources
 {
 private:
 	std::list<std::shared_ptr<Resource>> resources; 
 	
+	friend class gepEngine::Core;
+
 	std::weak_ptr<Core> core;
 	std::weak_ptr<Resources> self;
 
@@ -26,6 +29,9 @@ public:
 		//this takes the loaded data from the mesh/texture/shader etc and
 		//adds it to the above list, make a Resource then come back to this.
 		std::shared_ptr<T> rtn = T::load(path);
+
+		rtn->resources = self;
+
 		resources.push_back(rtn);
 
 		return rtn;

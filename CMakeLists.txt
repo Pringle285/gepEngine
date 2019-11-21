@@ -38,10 +38,12 @@ add_library(gepEngine
 	src/gepEngine/Texture.cpp
 	src/gepEngine/Mesh.cpp
 	src/gepEngine/Resources.cpp
+	src/gepEngine/MaterialAttribute.cpp
+	src/gepEngine/MeshRenderer.cpp
+	src/gepEngine/Material.cpp
 )
 
 target_link_libraries(gepEngine SDL2 rend)
-
 
 
 add_executable(sandbox

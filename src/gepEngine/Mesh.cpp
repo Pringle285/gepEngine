@@ -26,8 +26,10 @@ std::shared_ptr<Mesh> Mesh::load(std::string path)
 		std::getline(file, line);
 		obj += line + "\n";
 	}
-	raw = context->createMesh();
-	raw->parse(obj)
+	
+	raw = mesh->getCore()->getContext()->createMesh();
+	raw->parse(obj);
+
 	return mesh; 
 }
 

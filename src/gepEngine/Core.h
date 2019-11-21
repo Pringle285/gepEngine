@@ -1,5 +1,6 @@
 #include <memory>
 #include <list>
+#include <rend/rend.h>
 
 #include <SDL2/SDL.h>
 
@@ -29,6 +30,8 @@ private:
 public:
 	static std::shared_ptr<Core> initialize();
 	std::shared_ptr<Entity> addEntity();
+	std::shared_ptr<rend::Context> getContext();
+
 	void start();
 	void end();
 
