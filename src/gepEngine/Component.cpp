@@ -1,6 +1,7 @@
 #include "Component.h"
 #include "Entity.h"
 #include <iostream>
+#include "Core.h"
 
 namespace gepEngine
 {
@@ -22,6 +23,11 @@ std::shared_ptr<Entity> Component::getEntity()
 std::shared_ptr<Core> Component::getCore()
 {
 	return getEntity()->getCore();
+}
+
+std::shared_ptr<Resources> Component::getResources()
+{
+	return getCore()->getResources();
 }
 
 

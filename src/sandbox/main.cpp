@@ -9,15 +9,6 @@
 
 using namespace gepEngine;
 
-class TestScreen : public Component
-{
-	void onDisplay()
-	{
-		std::cout << "onDisplay called from testScreen" << std::endl;
-	}
-
-};
-
 //sdl2 tries to change main since each os uses
 //different mains such as winmain for windows
 //or nativemain on andriods and this avoids
@@ -27,15 +18,20 @@ class TestScreen : public Component
 #undef main
 int main()
 {
-	std::cout << "gep engine" << std::endl;
+	
+	//std::cout << "gep engine" << std::endl;
 	
 	std::shared_ptr<Core> c = Core::initialize();
-
+	/*
 	std::shared_ptr<Entity> entity1 = c->addEntity();
 
 	//std::shared_ptr<TriangleRenderer> triRender = entity1->addComponent<TriangleRenderer>();
+	*/
 
-	
+	std::shared_ptr<Entity> te = c->addEntity();
+	std::shared_ptr<MeshRenderer> mr = te->addComponent<MeshRenderer>();
+	std::shared_ptr<Mesh> mesh = c->getResources()->load<Mesh>("models/curuthers.obj");
+	mr->setMesh(mesh);
 
 
 	c->start();

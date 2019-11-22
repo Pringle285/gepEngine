@@ -1,15 +1,13 @@
 #include "Mesh.h"
 #include <fstream>
 #include "Exception.h"
+#include "Core.h"
 
 namespace gepEngine
 {
 
-std::shared_ptr<Mesh> Mesh::load(std::string path)
+void Mesh::load(std::string path)
 {
-
-	std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
-	mesh->self = mesh;
 
 	std::ifstream file(path);
 
@@ -27,10 +25,8 @@ std::shared_ptr<Mesh> Mesh::load(std::string path)
 		obj += line + "\n";
 	}
 	
-	raw = mesh->getCore()->getContext()->createMesh();
-	raw->parse(obj);
-
-	return mesh; 
+	raw = getCore()->getContext()->createMesh();
+	raw->parse(obj); 
 }
 
 

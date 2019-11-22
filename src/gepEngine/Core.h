@@ -8,6 +8,7 @@ namespace gepEngine
 {
 
 class Entity;
+class Resources;
 
 class Core
 {
@@ -23,14 +24,13 @@ private:
 	SDL_Window *window;
 	
 	std::shared_ptr<rend::Context> context;
+	std::shared_ptr<Resources>  resources;
 	
-	//do I need the line below? 
-	//std::shared_ptr<Resources> resources;
-
 public:
 	static std::shared_ptr<Core> initialize();
 	std::shared_ptr<Entity> addEntity();
 	std::shared_ptr<rend::Context> getContext();
+	std::shared_ptr<Resources> getResources();
 
 	void start();
 	void end();

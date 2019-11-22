@@ -1,6 +1,7 @@
 #include <memory>
 #include <string>
 #include <list> 
+#include <iostream>
 
 namespace gepEngine
 {
@@ -28,9 +29,11 @@ public:
 	{
 		//this takes the loaded data from the mesh/texture/shader etc and
 		//adds it to the above list, make a Resource then come back to this.
-		std::shared_ptr<T> rtn = T::load(path);
-
+		std::shared_ptr<T> rtn = std::make_shared<T>();
 		rtn->resources = self;
+		
+		
+		rtn->load(path);
 
 		resources.push_back(rtn);
 

@@ -1,3 +1,8 @@
+#pragma once
+#ifndef _RESOURCE_H
+#define _RESOURCE_H
+
+
 #include <string> 
 #include <memory>
 
@@ -23,3 +28,5 @@ public:
 };
 
 }
+
+#endif

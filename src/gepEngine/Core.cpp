@@ -42,10 +42,12 @@ std::shared_ptr<Core> Core::initialize()
 	//}
 	
 	//creating the resources object so it knows core exists
-	std::shared_ptr<Resources> resRtn = std::make_shared<Resources>();
-	resRtn->self = resRtn;
-	resRtn->core = core; 
+	core->resources = std::make_shared<Resources>();
+	core->resources->self = core->resources;
+	core->resources->core = core; 
 	
+	//core->resources;
+
 	//context = rend::Context::initialize();
 	core->context = rend::Context::initialize();
 
@@ -55,6 +57,11 @@ std::shared_ptr<Core> Core::initialize()
 std::shared_ptr<rend::Context> Core::getContext()
 {
 	return context;
+}
+
+std::shared_ptr<Resources> Core::getResources()
+{
+	return resources;
 }
 
 void Core::start()

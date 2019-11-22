@@ -1,6 +1,6 @@
 #include "Resource.h"
 #include "Resources.h"
-
+#include <iostream>
 
 namespace gepEngine
 {
@@ -13,6 +13,7 @@ std::shared_ptr<Resources> Resource::getResources()
 
 std::shared_ptr<Core> Resource::getCore()
 {
+	
 	return getResources()->getCore();
 }
 
