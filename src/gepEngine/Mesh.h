@@ -10,7 +10,6 @@ class Mesh : public Resource
 {
 private:
 	bool dirty;
-	std::weak_ptr<Mesh> self;
 	std::shared_ptr<rend::Mesh> raw; 
 
 	

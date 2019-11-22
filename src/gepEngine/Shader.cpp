@@ -3,7 +3,10 @@
 namespace gepEngine
 {
 
-
+void load(std::string path)
+{
+	
+}
 
 
 
