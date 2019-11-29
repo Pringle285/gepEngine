@@ -214,7 +214,7 @@ void Mesh::safeParse(const std::string& data, std::string& currentLine)
       b->add(fit->nc);
     }
 
-    setBuffer("a_Normal", b);
+  /*  setBuffer("a_Normal", b);
   }
 
   if(lmcs.size() > 0)
@@ -230,6 +230,7 @@ void Mesh::safeParse(const std::string& data, std::string& currentLine)
     }
 
     setBuffer("a_LightMapCoord", b);
+		*/
   }
 }
 

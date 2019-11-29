@@ -13,7 +13,7 @@ private:
 	glm::vec3 scale;
 
 public:
-	void setPosition(glm::vec3 position);
+	void setPosition(glm::vec3 settingPosition);
 	glm::vec3 getPosition();
 
 

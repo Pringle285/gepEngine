@@ -33,6 +33,12 @@ int main()
 	std::shared_ptr<Mesh> mesh = c->getResources()->load<Mesh>("models/curuthers.obj");
 	mr->setMesh(mesh);
 
+	std::shared_ptr<Material> material = c->getResources()->load<Material>("shaders/simple");
+	mr->setMaterial(material);
+
+	std::shared_ptr<Entity> cameraEntity = c->addEntity();
+	std::shared_ptr<Camera> camera = cameraEntity->addComponent<Camera>();
+
 
 	c->start();
 

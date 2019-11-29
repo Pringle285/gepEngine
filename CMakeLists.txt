@@ -34,13 +34,12 @@ add_library(gepEngine
 	src/gepEngine/Environment.cpp
 	src/gepEngine/Renderer.cpp
 	src/gepEngine/Resource.cpp
-	src/gepEngine/Shader.cpp
-	src/gepEngine/Texture.cpp
 	src/gepEngine/Mesh.cpp
+	src/gepEngine/Material.cpp
+	src/gepEngine/stb_image.h
 	src/gepEngine/Resources.cpp
 	src/gepEngine/MaterialAttribute.cpp
 	src/gepEngine/MeshRenderer.cpp
-	src/gepEngine/Material.cpp
 )
 
 target_link_libraries(gepEngine SDL2 rend)

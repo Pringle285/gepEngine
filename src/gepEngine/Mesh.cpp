@@ -27,8 +27,14 @@ void Mesh::load(std::string path)
 	
 	raw = getCore()->getContext()->createMesh();
 	raw->parse(obj); 
+
+	dirty = true;
 }
 
+std::shared_ptr<rend::Mesh> Mesh::getRendMesh()
+{
+	return raw; 
+}
 
 
 }

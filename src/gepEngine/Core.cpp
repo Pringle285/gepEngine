@@ -118,6 +118,16 @@ void Core::tick()
 	}
 }
 
+std::shared_ptr<Camera> Core::getCurrentCamera()
+{
+	return currentCamera.lock();
+}
+
+void Core::setCurrentCamera(std::shared_ptr<Camera> settingCamera)
+{
+	currentCamera = settingCamera;
+}
+
 
 void Core::end()
 {

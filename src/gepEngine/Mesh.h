@@ -1,4 +1,3 @@
-
 #include "Resource.h"
 #include <memory>
 #include <rend/rend.h>
@@ -16,7 +15,7 @@ private:
 
 public:
 	void load(std::string path);
-
+	std::shared_ptr<rend::Mesh> getRendMesh();
 
 };
 

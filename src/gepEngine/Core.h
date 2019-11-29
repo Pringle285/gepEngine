@@ -9,6 +9,7 @@ namespace gepEngine
 
 class Entity;
 class Resources;
+class Camera;
 
 class Core
 {
@@ -25,13 +26,16 @@ private:
 	
 	std::shared_ptr<rend::Context> context;
 	std::shared_ptr<Resources>  resources;
+
+	std::weak_ptr<Camera> currentCamera;
 	
 public:
 	static std::shared_ptr<Core> initialize();
 	std::shared_ptr<Entity> addEntity();
 	std::shared_ptr<rend::Context> getContext();
 	std::shared_ptr<Resources> getResources();
-
+	std::shared_ptr<Camera> getCurrentCamera();
+	void setCurrentCamera(std::shared_ptr<Camera> settingCamera);
 	void start();
 	void end();
 
