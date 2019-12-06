@@ -32,12 +32,16 @@ int main()
 	std::shared_ptr<MeshRenderer> mr = te->addComponent<MeshRenderer>();
 	std::shared_ptr<Mesh> mesh = c->getResources()->load<Mesh>("models/curuthers.obj");
 	mr->setMesh(mesh);
+	te->getTransform()->setPosition(glm::vec3(0,0,-10));
 
-	std::shared_ptr<Material> material = c->getResources()->load<Material>("shaders/simple");
+	std::shared_ptr<Material> material = c->getResources()->load<Material>("shaders/simpleTex");
+	material->addTexture("textures/curuthers_diffuse.png");
 	mr->setMaterial(material);
+	
 
 	std::shared_ptr<Entity> cameraEntity = c->addEntity();
 	std::shared_ptr<Camera> camera = cameraEntity->addComponent<Camera>();
+	cameraEntity->getTransform()->setPosition(glm::vec3(0, 0, 10));
 
 
 	c->start();

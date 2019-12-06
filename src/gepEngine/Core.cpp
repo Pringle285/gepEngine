@@ -1,6 +1,7 @@
 #include "Core.h"
 #include "Entity.h"
 #include "Resources.h"
+#include "Transform.h"
 
 #include <iostream>
 #include <exception>
@@ -81,10 +82,10 @@ void Core::start()
 			}
 		}
 		//calling update on all entities and components
-		tick();
+		//tick();
 
 		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//calling update on all entities and components
 		tick();
@@ -105,6 +106,8 @@ std::shared_ptr<Entity> Core::addEntity()
 	entities.push_back(rtn);
 	rtn->self = rtn;
 	rtn->core = self;
+	std::shared_ptr<Transform> transform = rtn->addComponent<Transform>();
+	rtn->trans = transform;
 	return rtn;
 }
 

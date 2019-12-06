@@ -9,16 +9,18 @@ namespace gepEngine
 class Camera : public Component
 {
 private:
-	glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f);
+	glm::mat4 projection;
 	
-	std::weak_ptr<Camera> self; 
+	std::weak_ptr<Camera> self;
+	friend class gepEngine::Entity;
 
 public:
 	glm::mat4 getView();
 	glm::mat4 getProjection();
 	
 	void onInit();
-
+	
+	std::shared_ptr<Camera> getCamera();
 };
 
 }

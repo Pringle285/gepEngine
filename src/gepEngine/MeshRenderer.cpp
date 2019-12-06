@@ -4,6 +4,7 @@
 #include <glm/ext/matrix_clip_space.hpp>
 #include "Core.h"
 #include "Camera.h"
+#include "Transform.h"
 
 
 namespace gepEngine
@@ -17,7 +18,9 @@ void MeshRenderer::onDisplay()
 	//lack of attribute setting
 	material->getShader()->setUniform("u_Projection", getCore()->getCurrentCamera()->getProjection()); 
 	//material->getShader()->setUniform("u_Projection", glm::perspective(glm::radians(45.0f), 800.0f/600.0f, 0.1f, 100.0f));
+	material->getShader()->setUniform("u_Model", getTransform()->getModel());
 	material->getShader()->setMesh(mesh->getRendMesh());
+	mesh->getRendMesh()->setTexture("u_Texture", material->getTexture());
 	material->getShader()->render();
 }
 

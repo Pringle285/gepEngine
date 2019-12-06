@@ -10,6 +10,7 @@ namespace gepEngine
 class Entity;
 class Resources;
 class Camera;
+class Transform;
 
 class Core
 {

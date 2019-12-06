@@ -43,7 +43,6 @@ void Material::addTexture(std::string path)
 	{
 		throw Exception("Failed to open texture");
 	}
-
 	tex = getCore()->getContext()->createTexture();
 
 	tex->setSize(w, h);
