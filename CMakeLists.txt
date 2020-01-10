@@ -27,18 +27,15 @@ add_library(gepEngine
 	src/gepEngine/Entity.cpp
 	src/gepEngine/Keyboard.cpp
 	src/gepEngine/Exception.cpp
-	src/gepEngine/TriangleRenderer.cpp
 	src/gepEngine/Transform.cpp
 	src/gepEngine/Camera.cpp
 	src/gepEngine/Screen.cpp
 	src/gepEngine/Environment.cpp
-	src/gepEngine/Renderer.cpp
 	src/gepEngine/Resource.cpp
 	src/gepEngine/Mesh.cpp
 	src/gepEngine/Material.cpp
 	src/gepEngine/stb_image.h
 	src/gepEngine/Resources.cpp
-	src/gepEngine/MaterialAttribute.cpp
 	src/gepEngine/MeshRenderer.cpp
 )
 

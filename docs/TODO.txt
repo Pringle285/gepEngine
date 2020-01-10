@@ -1,0 +1,18 @@
+TODO: 
+
+UML:
+Some areas will need smaller versions of almost the same diagram, for example
+when talking about the rendering system in the engine it would be worth having a smaller UML
+diagram to only show the rendering system
+Also when only talking about the resource handling it would be worth having a 
+small UML only displaying the resource handling section of the engine
+
+Remember to add a vector/list of cameras in core and link the camera class through
+aggregation on the UML back to the list held in core. 
+
+
+CODE:
+Add the keyboard functionality, once this is done check the UML info is correct in 
+Core keyboard pointer
+Component Keyboard pointer
+And fill out the Keyboard class on the UML diagram
