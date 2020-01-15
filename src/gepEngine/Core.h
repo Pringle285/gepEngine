@@ -16,6 +16,7 @@ class Entity;
 class Resources;
 class Camera;
 class Transform;
+class Keyboard; 
 
 class Core
 {
@@ -38,6 +39,8 @@ private:
 	//ALCcontext* audioContext;
 
 	std::weak_ptr<Camera> currentCamera;
+	
+	std::shared_ptr<Keyboard> keyboard; 
 	
 public:
 	static std::shared_ptr<Core> initialize();

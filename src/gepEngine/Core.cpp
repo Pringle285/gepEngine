@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "Resources.h"
 #include "Transform.h"
+#include "Keyboard.h"
 
 #include <iostream>
 #include <exception>
@@ -46,7 +47,9 @@ std::shared_ptr<Core> Core::initialize()
 	//creating the resources object so it knows core exists
 	core->resources = std::make_shared<Resources>();
 	core->resources->self = core->resources;
-	core->resources->core = core; 
+	core->resources->core = core;
+
+	core->keyboard = std::make_shared<Keyboard>();
 	
 	//core->resources;
 
@@ -99,7 +102,7 @@ void Core::start()
 
 	while(running)
 	{
-		SDL_Event event = {0};
+		SDL_Event event;
 
 		while(SDL_PollEvent(&event))
 		{
@@ -107,7 +110,19 @@ void Core::start()
 			{
 				running = false;
 			}
+			if(event.type == SDL_KEYDOWN)
+			{
+				int input = event.key.keysym.sym;
+				//std::cout << event.key.keysym.sym << std::endl;
+				keyboard->keyboardInput(input);
+			}
+			if(event.type == SDL_KEYUP)
+			{	
+				int release = event.key.keysym.sym;
+				keyboard->addingReleasedKeys(release);
+			}
 		}
+		keyboard->updateKeys();
 		//calling update on all entities and components
 		tick();
 
@@ -118,7 +133,7 @@ void Core::start()
 		display();
 
 		
-
+		keyboard->clearKeys();
 		SDL_GL_SwapWindow(window);
 	}
 

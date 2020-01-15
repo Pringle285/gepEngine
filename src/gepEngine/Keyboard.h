@@ -1,4 +1,5 @@
 #include <vector>
+#include <SDL2/SDL.h>
 
 namespace gepEngine
 {
@@ -13,9 +14,21 @@ private:
 
 
 public:
-	void keyboardInput();
+	void keyboardInput(int input);
 
 	void checkKeysForRelease();
+	void pressedKeysToKeys();
+
+	void addingReleasedKeys(int release);
+
+	void updateKeys();
+	
+	void clearKeys();
+
+
+	std::vector<int> getKeys();
+	std::vector<int> getPressedKeys();
+	std::vector<int> getReleasedKeys();
 
 };
 
