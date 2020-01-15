@@ -27,23 +27,38 @@ int main()
 
 	//std::shared_ptr<TriangleRenderer> triRender = entity1->addComponent<TriangleRenderer>();
 	*/
-
+	//testvar
+	glm::vec3 curuPos(0,0,-10);
 	std::shared_ptr<Entity> te = c->addEntity();
 	std::shared_ptr<MeshRenderer> mr = te->addComponent<MeshRenderer>();
 	std::shared_ptr<Mesh> mesh = c->getResources()->load<Mesh>("models/curuthers.obj");
 	mr->setMesh(mesh);
-	te->getTransform()->setPosition(glm::vec3(0,0,-10));
+	te->getTransform()->setPosition(curuPos);
+	te->getTransform()->setRotation(glm::vec3(0,0,0));
+	te->getTransform()->setScale(glm::vec3(0.5, 0.5, 0.5));
 
 	std::shared_ptr<Material> material = c->getResources()->load<Material>("shaders/simpleTex");
 	material->addTexture("textures/curuthers_diffuse.png");
 	mr->setMaterial(material);
+
+	std::shared_ptr<Entity> graveyard = c->addEntity();
+	std::shared_ptr<MeshRenderer> gyMR = graveyard->addComponent<MeshRenderer>();
+	std::shared_ptr<Mesh> gyMesh = c->getResources()->load<Mesh>("models/graveyard.obj");
+	gyMR->setMesh(gyMesh);
+	graveyard->getTransform()->setPosition(glm::vec3(0,-1,-10));
+
+	std::shared_ptr<Material> gyMaterial = c->getResources()->load<Material>("shaders/simpleTex");
+	gyMaterial->addTexture("textures/graveyard.png");
+	gyMR->setMaterial(gyMaterial);
+
 	
 
 	std::shared_ptr<Entity> cameraEntity = c->addEntity();
 	std::shared_ptr<Camera> camera = cameraEntity->addComponent<Camera>();
-	cameraEntity->getTransform()->setPosition(glm::vec3(0, 0, 10));
+	cameraEntity->getTransform()->setPosition(glm::vec3(0, 0,0));
+	cameraEntity->getTransform()->setRotation(glm::vec3(1,0,0));
 
-
+	curuPos.x += 0.1;
 	c->start();
 
 	system("pause");

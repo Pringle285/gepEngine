@@ -20,6 +20,7 @@ private:
 	std::list<std::shared_ptr<Component>> components;
 
 	void tick();
+	void display();
 
 public:
 	std::shared_ptr<Core> getCore();

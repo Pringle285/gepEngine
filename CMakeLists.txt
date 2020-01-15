@@ -45,6 +45,7 @@ add_library(gepEngine
 	src/gepEngine/Mesh.cpp
 	src/gepEngine/Material.cpp
 	src/gepEngine/stb_image.h
+	src/gepEngine/stb_vorbis.h
 	src/gepEngine/Resources.cpp
 	src/gepEngine/MeshRenderer.cpp
 )

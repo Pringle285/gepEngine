@@ -10,6 +10,14 @@ void Entity::tick()
 	for (auto x : components)
 	{
 		//std::cout << typeid(x).name();
+		x->onTick();
+	}
+}
+
+void Entity::display()
+{
+	for (auto x : components)
+	{
 		x->onDisplay();
 	}
 }

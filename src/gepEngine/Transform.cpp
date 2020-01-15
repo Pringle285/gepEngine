@@ -55,6 +55,10 @@ glm::mat4 Transform::getModel()
 	return m;
 }
 
+void Transform::onTick()
+{
+	getModel();
+}
 
 
 }

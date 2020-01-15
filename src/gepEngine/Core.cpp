@@ -6,7 +6,7 @@
 #include <iostream>
 #include <exception>
 #include <GL/glew.h>
-#include <AL/al.h>
+
 
 namespace gepEngine
 {
@@ -52,9 +52,35 @@ std::shared_ptr<Core> Core::initialize()
 
 	//context = rend::Context::initialize();
 	core->context = rend::Context::initialize();
+	
+
+	//audio init
+	/*
+	ALCdevice* audioDevice;
+	ALCcontext* context;
+	core->audioDevice = alcOpenDevice(NULL);
+	if (!core->audioDevice)
+	{
+		throw std::exception();
+	}
+	core->audioContext = alcCreateContext(core->audioDevice, NULL);
+	if (!core->audioContext)
+	{
+		alcCloseDevice(core->audioDevice);
+		throw std::exception();
+	}
+
+	if(!alcMakeContextCurrent(core->audioContext))
+	{
+		alcDestroyContext(core->audioContext);
+		alcCloseDevice(core->audioDevice);
+		throw std::exception();
+	}
+	*/
 
 	return core;
 }
+
 
 std::shared_ptr<rend::Context> Core::getContext()
 {
@@ -83,15 +109,14 @@ void Core::start()
 			}
 		}
 		//calling update on all entities and components
-		//tick();
+		tick();
 
 		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//calling update on all entities and components
-		tick();
+		//calling display on all entities and components
+		display();
 
-		//call display/draw functions from entities/components here
 		
 
 		SDL_GL_SwapWindow(window);
@@ -99,6 +124,9 @@ void Core::start()
 
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+	//alcMakeContextCurrent(NULL);
+	//alcDestroyContext(audioContext);
+	//alcDestroyContext(audioContext);
 }
 
 std::shared_ptr<Entity> Core::addEntity()
@@ -119,6 +147,14 @@ void Core::tick()
 	{
 		//std::cout << typeid(i).name();
 		i->tick();
+	}
+}
+
+void Core::display()
+{
+	for (auto i : entities)
+	{
+		i->display();
 	}
 }
 

@@ -25,7 +25,8 @@ public:
 	glm::vec3 getScale();
 
 	glm::mat4 getModel();
-
+	
+	void onTick();
 
 };
 
