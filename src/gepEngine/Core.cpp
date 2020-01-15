@@ -6,6 +6,7 @@
 #include <iostream>
 #include <exception>
 #include <GL/glew.h>
+#include <AL/al.h>
 
 namespace gepEngine
 {

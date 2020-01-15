@@ -3,6 +3,16 @@ project(GEPENGINE)
 
 include_directories(src)
 
+
+if(WIN32)
+  include_directories(
+	  contrib/include
+  )
+
+	link_directories(${CMAKE_SOURCE_DIR}/contrib/lib/gcc)
+endif()
+
+
 add_library(rend
 	src/rend/Exception.cpp
 	src/rend/Context.cpp
@@ -39,7 +49,7 @@ add_library(gepEngine
 	src/gepEngine/MeshRenderer.cpp
 )
 
-target_link_libraries(gepEngine SDL2 rend)
+target_link_libraries(gepEngine SDL2 rend OpenAL32)
 
 
 add_executable(sandbox
