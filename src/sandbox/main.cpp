@@ -25,8 +25,22 @@ struct catController : Component
 {
 	void onTick()
 	{
-		//if (getKeyboard()->getPressedKeys
-		getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0.1, 0, 0) * getCore()->getDeltaTime());
+		if (getKeyboard()->checkKeys('w'))
+		{
+			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, 0, 1) * getCore()->getDeltaTime());
+		}
+		if (getKeyboard()->checkKeys('a'))
+		{
+			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(1, 0, 0) * getCore()->getDeltaTime());
+		}
+		if (getKeyboard()->checkKeys('s'))
+		{
+			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, 0, -1) * getCore()->getDeltaTime());
+		}
+		if (getKeyboard()->checkKeys('d'))
+		{
+			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(-1, 0, 0) * getCore()->getDeltaTime());
+		}
 	}
 };
 

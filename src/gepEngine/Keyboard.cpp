@@ -21,7 +21,7 @@ void Keyboard::pressedKeysToKeys()
 		{
 			if ((*it) == (*keysIt))
 			{
-				std::cout << "test: " << (*it) << " " << (*keysIt) << std::endl;
+				//std::cout << "test: " << (*it) << " " << (*keysIt) << std::endl;
 				alreadyContains = true;
 			}
 		}
@@ -76,6 +76,20 @@ void Keyboard::clearKeys()
 std::vector<int> Keyboard::getKeys()
 {
 	return keys;
+}
+
+bool Keyboard::checkKeys(char testChar)
+{
+	bool checker = false;
+
+	for (std::vector<int>::iterator it = keys.begin(); it != keys.end(); it++)
+	{
+		if ((int)testChar == (*it))
+		{
+			checker = true; 
+		}
+	}
+	return checker;
 }
 
 std::vector<int> Keyboard::getPressedKeys()

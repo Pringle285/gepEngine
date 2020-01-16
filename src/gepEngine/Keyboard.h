@@ -29,6 +29,8 @@ public:
 	std::vector<int> getKeys();
 	std::vector<int> getPressedKeys();
 	std::vector<int> getReleasedKeys();
+	
+	bool checkKeys(char testChar);
 
 };
 
