@@ -102,6 +102,11 @@ std::shared_ptr<Keyboard> Core::getKeyboard()
 	return keyboard;
 }
 
+std::list<std::shared_ptr<Entity>> Core::getEntities()
+{
+	return entities;
+}
+
 void Core::start()
 {
 

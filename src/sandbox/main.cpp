@@ -7,6 +7,8 @@
 #include <GL/glew.h>
 #include <exception>
 
+#include <math.h>
+
 using namespace gepEngine;
 
 /*struct DogController : Component
@@ -21,28 +23,38 @@ using namespace gepEngine;
 	}
 };*/
 
-struct catController : Component
+struct camController : Component
 {
 	void onTick()
 	{
 		if (getKeyboard()->checkKeys('w'))
 		{
-			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, 0, 1) * getCore()->getDeltaTime());
+			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, 0, -3) * getCore()->getDeltaTime());
 		}
 		if (getKeyboard()->checkKeys('a'))
 		{
-			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(1, 0, 0) * getCore()->getDeltaTime());
+			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(-3, 0, 0) * getCore()->getDeltaTime());
 		}
 		if (getKeyboard()->checkKeys('s'))
 		{
-			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, 0, -1) * getCore()->getDeltaTime());
+			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, 0, 3) * getCore()->getDeltaTime());
 		}
 		if (getKeyboard()->checkKeys('d'))
 		{
-			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(-1, 0, 0) * getCore()->getDeltaTime());
+			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(3, 0, 0) * getCore()->getDeltaTime());
 		}
+		if (getKeyboard()->checkKeys('q'))
+		{
+			getTransform()->setRotation(getTransform()->getRotation() + glm::vec3(0, 0.4f, 0) * getCore()->getDeltaTime());
+		}
+		if (getKeyboard()->checkKeys('e'))
+		{
+			getTransform()->setRotation(getTransform()->getRotation() + glm::vec3(0, -0.4f, 0) * getCore()->getDeltaTime());
+		}
+
 	}
 };
+
 
 //sdl2 tries to change main since each os uses
 //different mains such as winmain for windows
@@ -57,11 +69,7 @@ int main()
 	//std::cout << "gep engine" << std::endl;
 	
 	std::shared_ptr<Core> c = Core::initialize();
-	/*
-	std::shared_ptr<Entity> entity1 = c->addEntity();
 
-	//std::shared_ptr<TriangleRenderer> triRender = entity1->addComponent<TriangleRenderer>();
-	*/
 	//testvar
 	glm::vec3 curuPos(0,0,-10);
 	std::shared_ptr<Entity> te = c->addEntity();
@@ -71,6 +79,9 @@ int main()
 	te->getTransform()->setPosition(curuPos);
 	te->getTransform()->setRotation(glm::vec3(0,0,0));
 	te->getTransform()->setScale(glm::vec3(0.5, 0.5, 0.5));
+	std::shared_ptr<BoxCollider> bcCuru = te->addComponent<BoxCollider>();
+	bcCuru->setSize(glm::vec3(1,1,1));
+	bcCuru->setOffset(glm::vec3(0.1f, 0.1f, 0.1f));
 
 	std::shared_ptr<Material> material = c->getResources()->load<Material>("shaders/simpleTex");
 	material->addTexture("textures/curuthers_diffuse.png");
@@ -90,12 +101,13 @@ int main()
 	 * e = addEntity();
 	 * e->addComponent<Player>();
 	 */
-	te->addComponent<catController>();
 
 	std::shared_ptr<Entity> cameraEntity = c->addEntity();
 	std::shared_ptr<Camera> camera = cameraEntity->addComponent<Camera>();
 	cameraEntity->getTransform()->setPosition(glm::vec3(0, 2, 0));
 	cameraEntity->getTransform()->setRotation(glm::vec3(-0.2, 0, 0));
+	
+	cameraEntity->addComponent<camController>();
 
 	curuPos.x += 0.1;
 	c->start();

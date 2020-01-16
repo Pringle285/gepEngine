@@ -1,3 +1,7 @@
+#pragma once
+#ifndef _ENTITY_H
+#define _ENTITY_H
+
 #include <memory>
 #include <list>
 
@@ -80,3 +84,4 @@ public:
 };
 
 }
+#endif

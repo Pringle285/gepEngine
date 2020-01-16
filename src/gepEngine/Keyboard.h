@@ -33,6 +33,7 @@ public:
 	bool checkKeys(char testChar);
 	bool checkPressedKeys(char testChar);
 	bool checkReleasedKeys(char testChar);
+	
 
 };
 

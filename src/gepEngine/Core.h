@@ -8,6 +8,9 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 
+#include "Entity.h"
+#include "Component.h"
+
 
 namespace gepEngine
 {
@@ -58,11 +61,47 @@ public:
 	std::shared_ptr<Resources> getResources();
 	std::shared_ptr<Keyboard> getKeyboard();
 	std::shared_ptr<Camera> getCurrentCamera();
+	std::list<std::shared_ptr<Entity>> getEntities();
 	void setCurrentCamera(std::shared_ptr<Camera> settingCamera);
 	void start();
 	void end();
 	
 	float getDeltaTime();
+
+	//Checking for entities with a specific component of type T
+	template <typename T>
+	std::list<std::shared_ptr<Entity>> entitiesWithComponent()
+	{
+		std::list<std::shared_ptr<Entity>> container;
+		//iterator through entities
+		for (std::list<std::shared_ptr<Entity>>::iterator itEnt = entities.begin(); itEnt != entities.end(); itEnt++)
+		{
+			//iterator through components of each entity
+			bool doesItContainT = false;
+			for (std::list<std::shared_ptr<Component>>::iterator itCom = (*itEnt)->components.begin(); itCom != (*itEnt)->components.end(); itCom++)
+			{
+				//checking if component type at current point in loop is equal to template type T
+				std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>((*itCom));
+				if (rtn)
+				{
+					//if rtn isn't null (component is of type T) set check to true
+					doesItContainT = true;
+				}
+
+			
+			}	
+			//if check above is true then push the entity into the vector
+			if (doesItContainT == true)
+			{
+				container.push_back((*itEnt));
+			}
+		}
+
+
+
+
+		return container; 
+	}
 
 
 };
