@@ -56,11 +56,13 @@ public:
 	std::shared_ptr<Entity> addEntity();
 	std::shared_ptr<rend::Context> getContext();
 	std::shared_ptr<Resources> getResources();
+	std::shared_ptr<Keyboard> getKeyboard();
 	std::shared_ptr<Camera> getCurrentCamera();
 	void setCurrentCamera(std::shared_ptr<Camera> settingCamera);
 	void start();
 	void end();
 	
+	float getDeltaTime();
 
 
 };

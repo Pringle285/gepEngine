@@ -19,6 +19,7 @@ void MeshRenderer::onDisplay()
 	material->getShader()->setUniform("u_Projection", getCore()->getCurrentCamera()->getProjection()); 
 	//material->getShader()->setUniform("u_Projection", glm::perspective(glm::radians(45.0f), 800.0f/600.0f, 0.1f, 100.0f));
 	material->getShader()->setUniform("u_Model", getTransform()->getModel());
+	material->getShader()->setUniform("u_View", getCore()->getCurrentCamera()->getView());
 	material->getShader()->setMesh(mesh->getRendMesh());
 	mesh->getRendMesh()->setTexture("u_Texture", material->getTexture());
 	material->getShader()->render();

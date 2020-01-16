@@ -34,6 +34,11 @@ std::shared_ptr<Transform> Component::getTransform()
 {
 	return getEntity()->getTransform();
 }
-
+	
+std::shared_ptr<Keyboard> Component::getKeyboard()
+{
+	return getCore()->getKeyboard();
+}
+	
 
 }

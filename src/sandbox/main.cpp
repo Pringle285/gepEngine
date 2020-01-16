@@ -9,6 +9,27 @@
 
 using namespace gepEngine;
 
+/*struct DogController : Component
+{
+  void onTick()
+	{
+    if(getKeyboard()->getKey(KEYS_DOWN))
+		{
+			//getTransform()->move(vec3(0, -1, 0) * getDeltaTime());
+			getTransform()->setPosition(getTransform()->getPosition() + vec3(0, -1, 0) * getDeltaTime());
+		}
+	}
+};*/
+
+struct catController : Component
+{
+	void onTick()
+	{
+		//if (getKeyboard()->getPressedKeys
+		getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0.1, 0, 0) * getCore()->getDeltaTime());
+	}
+};
+
 //sdl2 tries to change main since each os uses
 //different mains such as winmain for windows
 //or nativemain on andriods and this avoids
@@ -51,12 +72,16 @@ int main()
 	gyMaterial->addTexture("textures/graveyard.png");
 	gyMR->setMaterial(gyMaterial);
 
-	
+	/*
+	 * e = addEntity();
+	 * e->addComponent<Player>();
+	 */
+	te->addComponent<catController>();
 
 	std::shared_ptr<Entity> cameraEntity = c->addEntity();
 	std::shared_ptr<Camera> camera = cameraEntity->addComponent<Camera>();
-	cameraEntity->getTransform()->setPosition(glm::vec3(0, 0,0));
-	cameraEntity->getTransform()->setRotation(glm::vec3(1,0,0));
+	cameraEntity->getTransform()->setPosition(glm::vec3(0, 2, 0));
+	cameraEntity->getTransform()->setRotation(glm::vec3(-0.2, 0, 0));
 
 	curuPos.x += 0.1;
 	c->start();

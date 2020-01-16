@@ -97,6 +97,11 @@ std::shared_ptr<Resources> Core::getResources()
 	return resources;
 }
 
+std::shared_ptr<Keyboard> Core::getKeyboard()
+{
+	return keyboard;
+}
+
 void Core::start()
 {
 
@@ -210,6 +215,11 @@ void Core::setCurrentCamera(std::shared_ptr<Camera> settingCamera)
 void Core::end()
 {
 	
+}
+
+float Core::getDeltaTime()
+{
+	return environment->getDeltaTime();
 }
 
 

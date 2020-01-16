@@ -13,6 +13,7 @@ class Entity;
 class Core;
 class Resources;
 class Transform;
+class Keyboard;
 
 class Component
 {
@@ -32,7 +33,7 @@ public:
 	std::shared_ptr<Core> getCore();
 	std::shared_ptr<Resources> getResources();
 	std::shared_ptr<Transform> getTransform();
-
+	std::shared_ptr<Keyboard> getKeyboard();
 
 };
 

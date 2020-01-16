@@ -17,7 +17,7 @@ void Keyboard::pressedKeysToKeys()
 	for (std::vector<int>::iterator it = pressedKeys.begin(); it != pressedKeys.end(); ++it)
 	{
 		bool alreadyContains = false;
-		for (std::vector<int>::iterator keysIt = keys.begin(); keysIt != keys.end(); ++it)
+		for (std::vector<int>::iterator keysIt = keys.begin(); keysIt != keys.end(); ++keysIt)
 		{
 			if ((*it) == (*keysIt))
 			{
