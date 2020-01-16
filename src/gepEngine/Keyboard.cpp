@@ -30,10 +30,10 @@ void Keyboard::pressedKeysToKeys()
 			keys.push_back((*it));
 		}
 	}
-	for (std::vector<int>::iterator it = keys.begin(); it != keys.end(); ++it)
+	/*for (std::vector<int>::iterator it = keys.begin(); it != keys.end(); ++it)
 	{
 		std::cout << (*it) << std::endl;
-	}
+	}*/
 }
 
 void Keyboard::addingReleasedKeys(int release)
@@ -52,6 +52,7 @@ void Keyboard::checkKeysForRelease()
 			{
 				keys.erase(keys.begin() + counter);
 				counter--;
+				keysSize--;
 			}
 		}
 	}

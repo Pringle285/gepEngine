@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Transform.h"
 #include "Keyboard.h"
+#include "Environment.h"
 
 #include <iostream>
 #include <exception>
@@ -50,6 +51,7 @@ std::shared_ptr<Core> Core::initialize()
 	core->resources->core = core;
 
 	core->keyboard = std::make_shared<Keyboard>();
+	core->environment = std::make_shared<Environment>();
 	
 	//core->resources;
 
@@ -102,6 +104,7 @@ void Core::start()
 
 	while(running)
 	{
+		//checking for input & events via the SDL window
 		SDL_Event event;
 
 		while(SDL_PollEvent(&event))
@@ -122,18 +125,38 @@ void Core::start()
 				keyboard->addingReleasedKeys(release);
 			}
 		}
+
+
+		//setting max fps, finding deltatime
+		float time = SDL_GetTicks();
+		float diff = time - lastTime;
+		environment->setDeltaTime((diff / 1000.0f));
+		lastTime = time;
+		//sleeping off remaining time
+		if (idealTime > environment->getDeltaTime())
+		{
+			SDL_Delay((idealTime - environment->getDeltaTime()) * 1000.0f);
+		}
+		
+
+
+		//updating keys vector based on pressed & released keys
 		keyboard->updateKeys();
+		
 		//calling update on all entities and components
 		tick();
-
+		
+		//clearing the screen ready for the next draw
 		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//calling display on all entities and components
 		display();
 
-		
+		//clearing pressed & released keys since they are only relevant for a single frame
 		keyboard->clearKeys();
+
+
 		SDL_GL_SwapWindow(window);
 	}
 
