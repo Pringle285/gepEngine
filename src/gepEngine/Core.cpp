@@ -60,7 +60,7 @@ std::shared_ptr<Core> Core::initialize()
 	
 
 	//audio init
-	/*
+	
 	ALCdevice* audioDevice;
 	ALCcontext* context;
 	core->audioDevice = alcOpenDevice(NULL);
@@ -81,7 +81,7 @@ std::shared_ptr<Core> Core::initialize()
 		alcCloseDevice(core->audioDevice);
 		throw std::exception();
 	}
-	*/
+	
 
 	return core;
 }
@@ -157,7 +157,7 @@ void Core::start()
 		tick();
 		
 		//clearing the screen ready for the next draw
-		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.26f, 0.73f, 0.94f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//calling display on all entities and components

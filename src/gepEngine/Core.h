@@ -48,8 +48,8 @@ private:
 	//pointers for quick access around the engine
 	std::shared_ptr<rend::Context> context;
 	std::shared_ptr<Resources>  resources;
-	//ALCdevice* audioDevice;
-	//ALCcontext* audioContext;
+	ALCdevice* audioDevice;
+	ALCcontext* audioContext;
 	std::weak_ptr<Camera> currentCamera;
 	std::shared_ptr<Keyboard> keyboard; 
 	std::shared_ptr<Environment> environment;

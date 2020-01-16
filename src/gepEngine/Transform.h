@@ -24,6 +24,8 @@ public:
 	glm::vec3 getRotation();
 	glm::vec3 getScale();
 
+	void translate(glm::vec3 amount);
+
 	glm::mat4 getModel();
 	
 	void onTick();

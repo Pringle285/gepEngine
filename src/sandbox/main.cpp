@@ -29,27 +29,28 @@ struct camController : Component
 	{
 		if (getKeyboard()->checkKeys('w'))
 		{
-			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, 0, -3) * getCore()->getDeltaTime());
+			getTransform()->translate(glm::vec3(0,0, -3) * getCore()->getDeltaTime());
+			//getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, 0, -3) * getCore()->getDeltaTime());
 		}
 		if (getKeyboard()->checkKeys('a'))
 		{
-			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(-3, 0, 0) * getCore()->getDeltaTime());
+			getTransform()->translate(glm::vec3(-3,0,0) * getCore()->getDeltaTime());
 		}
 		if (getKeyboard()->checkKeys('s'))
 		{
-			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, 0, 3) * getCore()->getDeltaTime());
+			getTransform()->translate(glm::vec3(0,0,3) * getCore()->getDeltaTime());
 		}
 		if (getKeyboard()->checkKeys('d'))
 		{
-			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(3, 0, 0) * getCore()->getDeltaTime());
+			getTransform()->translate(glm::vec3(3,0,0) * getCore()->getDeltaTime());
 		}
 		if (getKeyboard()->checkKeys('q'))
 		{
-			getTransform()->setRotation(getTransform()->getRotation() + glm::vec3(0, 0.4f, 0) * getCore()->getDeltaTime());
+			getTransform()->setRotation(getTransform()->getRotation() + glm::vec3(0, 1, 0) * getCore()->getDeltaTime());
 		}
 		if (getKeyboard()->checkKeys('e'))
 		{
-			getTransform()->setRotation(getTransform()->getRotation() + glm::vec3(0, -0.4f, 0) * getCore()->getDeltaTime());
+			getTransform()->setRotation(getTransform()->getRotation() + glm::vec3(0, -1, 0) * getCore()->getDeltaTime());
 		}
 		if (getKeyboard()->checkKeys(' '))
 		{
@@ -79,6 +80,7 @@ int main()
 	std::shared_ptr<Core> c = Core::initialize();
 
 	//testvar
+	//Curuthers 1
 	glm::vec3 curuPos(0,0,-10);
 	std::shared_ptr<Entity> te = c->addEntity();
 	std::shared_ptr<MeshRenderer> mr = te->addComponent<MeshRenderer>();
@@ -95,6 +97,23 @@ int main()
 	material->addTexture("textures/curuthers_diffuse.png");
 	mr->setMaterial(material);
 
+	//Curuthers2
+	std::shared_ptr<Entity> curu2 = c->addEntity();
+	std::shared_ptr<MeshRenderer> curu2MR = curu2->addComponent<MeshRenderer>();
+	std::shared_ptr<Mesh> curu2Mesh = c->getResources()->load<Mesh>("models/curuthers.obj");
+	curu2MR->setMesh(curu2Mesh);
+	curu2->getTransform()->setPosition(glm::vec3(-10,1.8f,-40));
+	curu2->getTransform()->setRotation(glm::vec3(0,0,0));
+	curu2->getTransform()->setScale(glm::vec3(0.75, 0.75, 0.75));
+	//std::shared_ptr<BoxCollider> bcCuru2 = curu2->addComponent<BoxCollider>();
+	//bcCuru2->setSize(glm::vec3(1,1,1));
+	//bcCuru2->setOffset(glm::vec3(0.5f, 0.5f, 0.5f));
+	std::shared_ptr<Material> curu2Material = c->getResources()->load<Material>("shaders/simpleTex");
+	curu2Material->addTexture("textures/curuthers_diffuse.png");
+	curu2MR->setMaterial(curu2Material);
+
+
+	//Graveyard
 	std::shared_ptr<Entity> graveyard = c->addEntity();
 	std::shared_ptr<MeshRenderer> gyMR = graveyard->addComponent<MeshRenderer>();
 	std::shared_ptr<Mesh> gyMesh = c->getResources()->load<Mesh>("models/graveyard.obj");
@@ -110,16 +129,19 @@ int main()
 	 * e->addComponent<Player>();
 	 */
 
+
+	//Camera
 	std::shared_ptr<Entity> cameraEntity = c->addEntity();
 	std::shared_ptr<Camera> camera = cameraEntity->addComponent<Camera>();
 	cameraEntity->getTransform()->setPosition(glm::vec3(0, 2, 0));
-	cameraEntity->getTransform()->setRotation(glm::vec3(-0.2, 0, 0));
 	
 	cameraEntity->addComponent<camController>();
 	std::shared_ptr<BoxCollider> bcCam = cameraEntity->addComponent<BoxCollider>();
 	bcCam->setSize(glm::vec3(1,1,1));
 	bcCam->setOffset(glm::vec3(0.5f,0.5f,0.5f));
 
+
+	//Begin the program
 	c->start();
 
 	system("pause");
