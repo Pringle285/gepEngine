@@ -48,6 +48,7 @@ add_library(gepEngine
 	src/gepEngine/stb_vorbis.h
 	src/gepEngine/Resources.cpp
 	src/gepEngine/MeshRenderer.cpp
+	src/gepEngine/BoxCollider.cpp
 )
 
 target_link_libraries(gepEngine SDL2 rend OpenAL32)
