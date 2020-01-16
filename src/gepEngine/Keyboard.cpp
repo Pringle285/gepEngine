@@ -92,15 +92,44 @@ bool Keyboard::checkKeys(char testChar)
 	return checker;
 }
 
+
 std::vector<int> Keyboard::getPressedKeys()
 {
 	return pressedKeys;
 }
+
+bool Keyboard::checkPressedKeys(char testChar)
+{
+	bool checker = false; 
+
+	for (std::vector<int>::iterator it = pressedKeys.begin(); it != pressedKeys.end(); it++)
+	{
+		if ((int)testChar == (*it))
+		{
+			checker = true;
+		}
+	}
+	return checker;
+}
+
 
 std::vector<int> Keyboard::getReleasedKeys()
 {
 	return releasedKeys;
 }
 
+bool Keyboard::checkReleasedKeys(char testChar)
+{
+	bool checker = false;
+
+	for (std::vector<int>::iterator it = releasedKeys.begin(); it != releasedKeys.end(); it++)
+	{
+		if ((int)testChar == (*it))
+		{
+			checker = true;
+		}
+	}
+	return checker; 
+}
 
 }

@@ -31,6 +31,8 @@ public:
 	std::vector<int> getReleasedKeys();
 	
 	bool checkKeys(char testChar);
+	bool checkPressedKeys(char testChar);
+	bool checkReleasedKeys(char testChar);
 
 };
 
