@@ -18,6 +18,8 @@ public:
 	void onInit();
 	void setSize(glm::vec3 settingSize);
 	void setOffset(glm::vec3 settingOffset);
+	void collideBox();
+	glm::vec3 getCollisionResponse(glm::vec3 position, glm::vec3 size);
 	bool isColliding(glm::vec3 position, glm::vec3 size);
 
 };

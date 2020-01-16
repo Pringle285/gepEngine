@@ -51,6 +51,14 @@ struct camController : Component
 		{
 			getTransform()->setRotation(getTransform()->getRotation() + glm::vec3(0, -0.4f, 0) * getCore()->getDeltaTime());
 		}
+		if (getKeyboard()->checkKeys(' '))
+		{
+			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, 3, 0) * getCore()->getDeltaTime());
+		}
+		if (getKeyboard()->checkKeys('x'))
+		{
+			getTransform()->setPosition(getTransform()->getPosition() + glm::vec3(0, -3, 0) * getCore()->getDeltaTime());
+		}
 
 	}
 };
@@ -81,7 +89,7 @@ int main()
 	te->getTransform()->setScale(glm::vec3(0.5, 0.5, 0.5));
 	std::shared_ptr<BoxCollider> bcCuru = te->addComponent<BoxCollider>();
 	bcCuru->setSize(glm::vec3(1,1,1));
-	bcCuru->setOffset(glm::vec3(0.1f, 0.1f, 0.1f));
+	bcCuru->setOffset(glm::vec3(0.5f, 0.5f, 0.5f));
 
 	std::shared_ptr<Material> material = c->getResources()->load<Material>("shaders/simpleTex");
 	material->addTexture("textures/curuthers_diffuse.png");
@@ -108,8 +116,10 @@ int main()
 	cameraEntity->getTransform()->setRotation(glm::vec3(-0.2, 0, 0));
 	
 	cameraEntity->addComponent<camController>();
+	std::shared_ptr<BoxCollider> bcCam = cameraEntity->addComponent<BoxCollider>();
+	bcCam->setSize(glm::vec3(1,1,1));
+	bcCam->setOffset(glm::vec3(0.5f,0.5f,0.5f));
 
-	curuPos.x += 0.1;
 	c->start();
 
 	system("pause");
