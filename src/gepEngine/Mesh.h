@@ -12,9 +12,11 @@ private:
 	std::shared_ptr<rend::Mesh> raw; 
 
 	
-
 public:
+	//function to load in the mesh and parse the data to rend
 	void load(std::string path);
+	
+	//pointer to rend version of the mesh
 	std::shared_ptr<rend::Mesh> getRendMesh();
 
 };

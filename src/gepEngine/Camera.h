@@ -15,11 +15,16 @@ private:
 	friend class gepEngine::Entity;
 
 public:
+	//provides the view matrix of the camera
 	glm::mat4 getView();
+
+	//provides the projection matrix provided by the camera
 	glm::mat4 getProjection();
 	
+	//overwrite of virtual init to initilize camera data
 	void onInit();
 	
+	//returns a shared pointer of this camera
 	std::shared_ptr<Camera> getCamera();
 };
 

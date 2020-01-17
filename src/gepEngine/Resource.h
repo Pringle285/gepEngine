@@ -16,13 +16,17 @@ class Resource
 {
 private:
 	friend class gepEngine::Resources;
+	//path for loading files
 	std::string path;
 
 	std::weak_ptr<Resources> resources;
 
 
 public:
+	//provides access to resources
 	std::shared_ptr<Resources> getResources();
+
+	//shortcut for access to core
 	std::shared_ptr<Core> getCore();
 
 };

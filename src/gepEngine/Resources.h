@@ -12,18 +12,20 @@ class Core;
 class Resources
 {
 private:
+	//list of shared pointers to all resources
 	std::list<std::shared_ptr<Resource>> resources; 
 	
 	friend class gepEngine::Core;
 
+	//pointers around CES system
 	std::weak_ptr<Core> core;
 	std::weak_ptr<Resources> self;
 
 public: 
-
+	//Provides access to core
 	std::shared_ptr<Core> getCore();
 	
-
+	//template function to load a resource of type T from provided path
 	template <typename T>
 	std::shared_ptr<T> load(std::string path)
 	{

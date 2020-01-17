@@ -21,9 +21,13 @@ public:
 	
 	//this loads a shader since shaders are always required, textures are optional
 	void load(std::string path);
+	//provides option to add texture to material from path provided
 	void addTexture(std::string path);
-
+	
+	//access to rend shader
 	std::shared_ptr<rend::Shader> getShader();
+
+	//access to rend texture
 	std::shared_ptr<rend::Texture> getTexture();
 
 };
